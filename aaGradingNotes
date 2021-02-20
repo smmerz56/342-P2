@@ -1,0 +1,64 @@
+
+
+The .h file
+--------------
+You must define IntSet ADT. Use information from assignment.
+Don't include implementation in ADT description. It is not a wrapper.
+Talk about mathematical sets.
+
+Assumptions are fine. Talk about bool array here.
+
+All data members need good descriptive comments. Say what the pointer is for,
+that it is for an array saying whether a subscript value is in the set.
+
+Each function should have a comment, doesn't have to be too detailed,
+but should be descriptive.
+
+Const used correctly in function parameter list.
+Const used correctly at function end, except missing in isEmpty, isInSet.
+
+
+Source code (constructor, destructor, operator+, +=, ==, others as needed)
+---------------------------------------------------------------
+
+Constructor:
+Okay.
+
+Destructor:
+Okay.
+
+Operator+, +=:
+
+If you find the correct array size before instantiating the local object, you
+can use it in the constructor to size the array. This saves having to do an
+extra delete/new which is costly. Since size is set to true in the constructor,
+then set the size passed in to false (since it may not be in the set).
+
+While using
+   return *this = *this + rightSide;
+is clean, it does extra new/deletes which are costly.
+
+Operator==:
+It is possible for IntSet objects to have different sized arrays and be equal.
+
+
+Execution
+------------
+
+The operator-, -= are not always correct.
+
+The operator== is not always correct.
+
+Note that operator>> was not tested or looked at.
+
+No memory leaks.
+
+But valgrind gives some errors:
+   Invalid read
+in operator-. (Clue to your bug.)
+
+Inefficient - Few too many new/deletes.
+You do 107 allocations when it can be done in under 80.
+
+
+Grade:  25 out of 30
